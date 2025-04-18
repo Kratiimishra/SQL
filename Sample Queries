@@ -1,0 +1,18 @@
+-- 1. List all borrowed books with member names
+SELECT b.Title, m.Name, bb.BorrowDate, bb.ReturnDate
+FROM BorrowedBooks bb
+JOIN Books b ON bb.BookID = b.BookID
+JOIN Members m ON bb.MemberID = m.MemberID;
+
+-- 2. Find overdue books (assuming today is '2024-04-18')
+SELECT b.Title, m.Name, bb.BorrowDate
+FROM BorrowedBooks bb
+JOIN Books b ON bb.BookID = b.BookID
+JOIN Members m ON bb.MemberID = m.MemberID
+WHERE bb.ReturnDate IS NULL AND bb.BorrowDate < DATE_SUB('2024-04-18', INTERVAL 14 DAY);
+
+-- 3. Count how many books each member has borrowed
+SELECT m.Name, COUNT(*) AS BooksBorrowed
+FROM BorrowedBooks bb
+JOIN Members m ON bb.MemberID = m.MemberID
+GROUP BY m.Name;
