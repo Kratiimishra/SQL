@@ -1,0 +1,15 @@
+-- Sample Books
+INSERT INTO Books VALUES
+(1, 'The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction', 1925),
+(2, '1984', 'George Orwell', 'Dystopian', 1949),
+(3, 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', 1960);
+
+-- Sample Members
+INSERT INTO Members VALUES
+(101, 'Alice Johnson', '2023-01-15'),
+(102, 'Bob Smith', '2023-03-10');
+
+-- Sample BorrowedBooks
+INSERT INTO BorrowedBooks VALUES
+(201, 1, 101, '2024-03-01', '2024-03-20'),
+(202, 2, 102, '2024-04-01', NULL);  -- not yet returned
