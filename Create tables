@@ -1,0 +1,30 @@
+-- Create the database (optional depending on your SQL environment)
+CREATE DATABASE LibraryDB;
+USE LibraryDB;
+
+-- Books table
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    Author VARCHAR(100),
+    Genre VARCHAR(50),
+    YearPublished INT
+);
+
+-- Members table
+CREATE TABLE Members (
+    MemberID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    JoinDate DATE
+);
+
+-- BorrowedBooks table
+CREATE TABLE BorrowedBooks (
+    BorrowID INT PRIMARY KEY,
+    BookID INT,
+    MemberID INT,
+    BorrowDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+);
